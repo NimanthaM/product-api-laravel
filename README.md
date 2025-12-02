@@ -31,7 +31,7 @@ composer --version
 If you don't have XAMPP, download it from: https://www.apachefriends.org/
 If you don't have Composer, download it from: https://getcomposer.org/download/
 
-## 🛠️ Installation & Setup
+## Installation & Setup
 
 Follow these steps to set up the project on your local machine:
 
@@ -129,7 +129,7 @@ Starting Laravel development server: http://127.0.0.1:8000
 
 **Keep this PowerShell window open!** The server will stop if you close it.
 
-## 📡 API Endpoints
+## API Endpoints
 
 ### Get All Products
 - **URL**: `http://localhost:8000/api/products`
@@ -165,7 +165,7 @@ Starting Laravel development server: http://127.0.0.1:8000
 }
 ```
 
-## 🧪 Testing the API
+## Testing the API
 
 ### Using Browser
 Simply navigate to: `http://localhost:8000/api/products`
@@ -181,7 +181,7 @@ curl http://localhost:8000/api/products
 3. Enter URL: `http://localhost:8000/api/products`
 4. Click Send
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 product-api-laravel/
@@ -207,7 +207,7 @@ product-api-laravel/
 └── README.md                            # This file
 ```
 
-## 🗃️ Database Schema
+## Database Schema
 
 ### Products Table
 | Column      | Type          | Description                    |
@@ -220,7 +220,7 @@ product-api-laravel/
 | created_at  | timestamp     | Creation timestamp             |
 | updated_at  | timestamp     | Last update timestamp          |
 
-## 🔧 Troubleshooting
+## Troubleshooting
 
 ### Issue: "Access denied for user 'root'@'localhost'"
 **Solution**: 
