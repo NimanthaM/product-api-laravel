@@ -14,22 +14,56 @@ A RESTful API built with Laravel for managing products in an ecommerce applicati
 
 This project uses **XAMPP** for PHP and MySQL. Before you begin, ensure you have:
 
-- **XAMPP** (includes PHP 8.0.30 and MySQL)
+- **XAMPP** with **PHP 7.3 - 8.0** (this project was built with PHP 8.0.30)
 - **Composer** (PHP dependency manager)
 - **Git**
 
-### Check if you have PHP installed:
+### IMPORTANT: PHP Version Requirements
+
+This project requires **PHP 7.3, 7.4, or 8.0** (NOT PHP 8.1 or higher).
+
+**Why?** 
+- Laravel 8 is used for compatibility with PHP 8.0
+- Laravel 10+ requires PHP 8.1 minimum
+- If you have PHP 8.1+, you'll get dependency errors
+
+### Check Your PHP Version:
 ```powershell
+# For XAMPP users:
 C:\xampp\php\php.exe --version
+
+# Or if PHP is in your PATH:
+php --version
 ```
+
+**Expected Output:**
+```
+PHP 8.0.30 (cli) (built: Aug  9 2023 04:05:47) ( ZTS Visual C++ 2019 x64 )
+```
+
+### If Your PHP Version is Different:
+
+**Option 1: Download XAMPP with PHP 8.0** (Recommended)
+- Download from: https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/8.0.30/
+- This version includes PHP 8.0.30 which works perfectly with this project
+
+**Option 2: Update composer.json** (If you have PHP 8.1, 8.2, or 8.3)
+- Change Laravel version from `^8.75` to `^10.0` in `composer.json`
+- This requires updating some code syntax
+- Not recommended unless you're familiar with Laravel
+
+**Option 3: Use Multiple PHP Versions**
+- Install PHP 8.0 separately
+- Update the `php.exe` path in commands to point to PHP 8.0
 
 ### Check if you have Composer installed:
 ```powershell
 composer --version
 ```
 
-If you don't have XAMPP, download it from: https://www.apachefriends.org/
-If you don't have Composer, download it from: https://getcomposer.org/download/
+**Required Downloads:**
+- XAMPP with PHP 8.0: https://www.apachefriends.org/ or https://sourceforge.net/projects/xampp/files/
+- Composer: https://getcomposer.org/download/
 
 ## Installation & Setup
 
@@ -50,11 +84,18 @@ cd product-api-laravel
 
 ### Step 3: Install Dependencies
 
+**IMPORTANT**: Make sure your PHP version is 7.3 - 8.0 before running this command!
+
 ```powershell
 composer install
 ```
 
 This will install all the required Laravel packages and dependencies (105 packages).
+
+**If you get an error like "requires php ^7.3|^8.0":**
+- Your PHP version is incompatible
+- Check your PHP version: `php --version`
+- See the Prerequisites section above for solutions
 
 ### Step 4: Environment Configuration
 
@@ -142,12 +183,14 @@ Starting Laravel development server: http://127.0.0.1:8000
     "name": "Wireless Bluetooth Headphones",
     "description": "Premium noise-cancelling wireless headphones...",
     "price": "129.99",
-    "image_url": "https://images.unsplash.com/photo-...",
+    "image_url": "/images/products/headphones.jpg",
     "created_at": "2024-01-01T00:00:00.000000Z",
     "updated_at": "2024-01-01T00:00:00.000000Z"
   }
 ]
 ```
+
+**Note**: Product images are stored locally in `public/images/products/` directory.
 
 ### Get Single Product
 - **URL**: `http://localhost:8000/api/products/{id}`
@@ -159,7 +202,7 @@ Starting Laravel development server: http://127.0.0.1:8000
   "name": "Wireless Bluetooth Headphones",
   "description": "Premium noise-cancelling wireless headphones...",
   "price": "129.99",
-  "image_url": "https://images.unsplash.com/photo-...",
+  "image_url": "/images/products/headphones.jpg",
   "created_at": "2024-01-01T00:00:00.000000Z",
   "updated_at": "2024-01-01T00:00:00.000000Z"
 }
@@ -221,6 +264,29 @@ product-api-laravel/
 | updated_at  | timestamp     | Last update timestamp          |
 
 ## Troubleshooting
+
+### Issue: "Your requirements could not be resolved" or "requires php ^7.3|^8.0"
+**Cause**: Your PHP version is incompatible with Laravel 8.
+
+**Check your PHP version:**
+```powershell
+php --version
+```
+
+**Solutions**:
+
+1. **If you have PHP 8.1+ (Recommended)**: Download XAMPP with PHP 8.0
+   - Download: https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/8.0.30/
+   - Install it in a different directory (e.g., `C:\xampp80\`)
+   - Update all commands to use the new path: `C:\xampp80\php\php.exe`
+
+2. **If you have PHP 7.2 or older**: Upgrade to PHP 8.0 (use XAMPP 8.0.30)
+
+3. **Advanced Option**: Upgrade to Laravel 10
+   - Edit `composer.json`: change `"laravel/framework": "^8.75"` to `"laravel/framework": "^10.0"`
+   - Change PHP requirement: `"php": "^8.1"`
+   - Run `composer update`
+   - **Note**: This may require code changes
 
 ### Issue: "Access denied for user 'root'@'localhost'"
 **Solution**: 
