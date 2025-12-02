@@ -17,7 +17,7 @@ class ProductSeeder extends Seeder
         // 1. Place image files in: public/images/products/
         // 2. Update the image_url below to match your filename
         // 3. Run: php artisan migrate:fresh --seed
-        
+
         $products = [
             [
                 'name' => 'Wireless Bluetooth Headphones',
